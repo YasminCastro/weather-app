@@ -1,0 +1,79 @@
+body {
+  color: #333333;
+  font-family: "Roboto", sans-serif;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+footer {
+  color: #888888;
+  border-top: 1px solid #eeeeee;
+  background: #f2f2f2;
+  padding: 16px 5px;
+  margin-top: 16px;
+}
+
+header {
+  margin-bottom: 48px;
+  background: #c3dee9;
+  padding: 10px;
+}
+
+header a {
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.portrait {
+  width: 360px;
+}
+
+button {
+  font-family: "Ubuntu", sans-serif;
+  height: 30px;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 3px solid #93acb6;
+  background: #fff;
+  color: #93acb6;
+  border-radius: 40px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s;
+}
+
+button:hover {
+  background: #93acb6;
+  color: #fff;
+}
+
+input {
+  height: 30px;
+  border: 2px solid #93acb6;
+  border-radius: 2px;
+}
+
+#message-erro {
+  color: #ba3939;
+}
+
+#message-1 {
+  font-weight: 700;
+}
