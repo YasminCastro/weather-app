@@ -2,28 +2,28 @@ const request = require("request");
 
 const forecast = (latitude, longitude, callback) => {
   //puxar a location da cidade
-  const url = `http://api.weatherstack.com/current?access_key=9d35a028587b06197804c8180334ab07&query=${latitude},${longitude}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=3c40897d844ef8da0a4d3075e59a205f&lang=pt_br&units=metric`;
 
   request({ url, json: true }, (error, { body }) => {
-    console.log(body);
     if (error) {
       callback("Unable to connect to weather service!", undefined);
     } else if (body.error) {
       callback("Unable to find location", undefined);
-    } else if (body.sucess) {
-      callback(body.error.info, undefined);
     } else {
-      const weather_description =
-        body.current.weather_descriptions[0].toLowerCase();
+      const tempoRaw = body.main.temp;
+      const temperatura = tempoRaw.toFixed(0);
+      const feelsLikeRaw = body.main.feels_like;
+      const feelsLike = feelsLikeRaw.toFixed(0);
+
       callback(
         undefined,
 
         " A temperatura é de " +
-          body.current.temperature +
-          "°c, com sensação térmica de " +
-          body.current.feelslike +
-          "°c e o dia será " +
-          weather_description +
+          temperatura +
+          "°C, com sensação térmica de " +
+          feelsLike +
+          "°C e  " +
+          body.weather[0].description +
           "."
       );
     }
