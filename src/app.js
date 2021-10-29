@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
+const Qs = require("qs");
 const geocode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
 
@@ -72,15 +73,25 @@ app.get("/weather", (req, res) => {
   );
 });
 
-app.get("/products", (req, res) => {
-  if (!req.query.search) {
-    return res.send({
-      error: "You must provide a search term",
-    });
+app.get("/currentweather", (req, res) => {
+  const { lat, long } = Qs.parse(req.query, {
+    ignoreQueryPrefix: true,
+  });
+
+  if (!req.query) {
+    return res
+      .status(400)
+      .send({ error: "Não foi possivel pegar sua localização!" });
   }
 
-  res.send({
-    products: [],
+  forecast(lat, long, (error, forecastData) => {
+    try {
+      res.send({
+        forecast: forecastData,
+      });
+    } catch (error) {
+      return res.status(400).send({ error: "esse" });
+    }
   });
 });
 

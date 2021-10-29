@@ -18,10 +18,14 @@
     <div class="main-content">{{>header}}
       <h3>Insira a cidade que deseja saber a previsão do tempo!</h3>
 
-      <form >
-        <input type="text" placeholder="Cidade">
-        <button class="fill">Procurar</button>
-      </form>
+      <div>
+        <form >
+          <input type="text" placeholder="Cidade">
+          <button class="fill">Procurar</button>
+        </form>
+      <button id="get-location" class="fill">Enviar localização</button>
+      </div>
+      
 
       <p id="message-erro"></p>
       <p id="message-1"><b></b></p> 
